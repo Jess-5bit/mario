@@ -9,6 +9,21 @@
 			<p>Your browser does not support the canvas element.</p>
 		</canvas>
 
+    <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: black;
+      overflow: hidden;
+      transform: scale(1.1); /* Zoom the whole page by 1.5x */
+      transform-origin: center center; /* Ensure the zoom happens from the center */
+    }
+    </style>
+        
+
         <!-- Enjine Includes -->
         <script src="Enjine/core.js"></script>
         <script src="Enjine/gameCanvas.js"></script>
