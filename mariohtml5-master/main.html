@@ -4,22 +4,26 @@
 		<title>Infinite Mario - JavaScript</title>
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 	</head>
+   <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      background: black;
+    }
+    canvas {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
+  </head>
 	<body>
 		<canvas id="canvas" width="640" height="485">
 			<p>Your browser does not support the canvas element.</p>
 		</canvas>
 
-<style>
-     html, body {
-      height: 100%;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: black;
-    overflow: hidden;
-    }
-  </style>   
         <!-- Enjine Includes -->
         <script src="Enjine/core.js"></script>
         <script src="Enjine/gameCanvas.js"></script>
@@ -69,6 +73,19 @@
 
         <script src="code/music.js"></script>
 
-        <script>$(document).ready(function() { new Enjine.Application().Initialize(new Mario.LoadingState(), 320, 240) });</script>
+    <script>
+      $(document).ready(function () {
+        const canvas = document.getElementById('canvas');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        new Enjine.Application().Initialize(new Mario.LoadingState(), canvas.width, canvas.height);
+
+        window.addEventListener('resize', () => {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        });
+      });
+    </script>
 	</body>
 </html>
