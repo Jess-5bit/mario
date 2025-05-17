@@ -14,16 +14,13 @@
     }
   canvas {
     display: block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(calc(min(100vw / 320, 100vh / 240)));
-    image-rendering: pixelated;
+    width: 100vw;
+    height: 100vh;
   }
   </style>
   </head>
 	<body>
-		<canvas id="canvas" width="640" height="485">
+      <canvas id="canvas"></canvas>
 			<p>Your browser does not support the canvas element.</p>
 		</canvas>
 
@@ -77,18 +74,18 @@
         <script src="code/music.js"></script>
 
     <script>
-      $(document).ready(function () {
-        const canvas = document.getElementById('canvas');
+    $(document).ready(function () {
+      const canvas = document.getElementById('canvas');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      new Enjine.Application().Initialize(new Mario.LoadingState(), canvas.width, canvas.height);
+
+      window.addEventListener('resize', () => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-
-        new Enjine.Application().Initialize(new Mario.LoadingState(), canvas.width, canvas.height);
-
-        window.addEventListener('resize', () => {
-          canvas.width = window.innerWidth;
-          canvas.height = window.innerHeight;
-        });
       });
+    });
     </script>
 	</body>
 </html>
