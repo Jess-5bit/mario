@@ -12,11 +12,14 @@
       overflow: hidden;
       background: black;
     }
-    canvas {
-      display: block;
-      width: 100vw;
-      height: 100vh;
-    }
+  canvas {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(calc(min(100vw / 320, 100vh / 240)));
+    image-rendering: pixelated;
+  }
   </style>
   </head>
 	<body>
