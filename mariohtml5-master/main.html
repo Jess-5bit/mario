@@ -5,22 +5,28 @@
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 	</head>
    <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
-      background: black;
-    }
-  canvas {
-    display: block;
-    width: 100vw;
-    height: 100vh;
-  }
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+        background: black;
+      }
+
+      canvas {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 320px;
+        height: 240px;
+        transform: translate(-50%, -50%) scale(calc(min(100vw / 320, 100vh / 240)));
+        transform-origin: top left;
+        image-rendering: pixelated; /* preserves pixel art look */
+      }
   </style>
   </head>
 	<body>
-      <canvas id="canvas"></canvas>
+      <canvas id="canvas">
 			<p>Your browser does not support the canvas element.</p>
 		</canvas>
 
@@ -79,7 +85,7 @@
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
 
-      new Enjine.Application().Initialize(new Mario.LoadingState(), canvas.width, canvas.height);
+      new Enjine.Application().Initialize(new Mario.LoadingState(), 320, 240);
 
       window.addEventListener('resize', () => {
         canvas.width = window.innerWidth;
